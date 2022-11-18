@@ -1,0 +1,76 @@
+{
+	"name": "nextjs-express-typescript-boilerplate",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"lint": "cross-env NODE_ENV=development eslint ./src --cache --ext .js,.jsx,.ts,.tsx",
+		"pretty": "prettier --write src",
+		"dev": "nodemon --watch src src/app.ts",
+		"start": "cross-env NODE_ENV=production node dist/app.js",
+		"clean": "rimraf dist",
+		"build": "npm run clean && npm run build:ts",
+		"build:ts": "tsc --project ./",
+		"prepare": "husky install"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/cors": "^2.8.12",
+		"@types/dotenv-flow": "^3.1.1",
+		"@types/express": "^4.17.13",
+		"@types/http-errors": "^1.8.1",
+		"@types/node": "^18.0.0",
+		"@typescript-eslint/eslint-plugin": "^5.29.0",
+		"@typescript-eslint/parser": "^5.29.0",
+		"copyfiles": "^2.4.1",
+		"cross-env": "^7.0.3",
+		"eslint": "^8.18.0",
+		"eslint-config-airbnb": "^19.0.4",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-import": "^2.23.4",
+		"eslint-plugin-jsx-a11y": "^6.4.1",
+		"husky": "^8.0.1",
+		"lint-staged": "^13.0.3",
+		"nodemon": "^2.0.12",
+		"onchange": "^7.1.0",
+		"prettier": "^2.3.2",
+		"rimraf": "^3.0.2",
+		"ts-node": "^10.1.0",
+		"typescript": "^4.7.4"
+	},
+	"dependencies": {
+		"@types/jsonwebtoken": "^8.5.4",
+		"cors": "^2.8.5",
+		"dotenv-flow": "^3.2.0",
+		"express": "^4.17.1",
+		"futoin-hkdf": "^1.4.2",
+		"http-errors": "^2.0.0",
+		"joi": "^17.4.1",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^6.4.0",
+		"qs": "^6.7.0",
+		"winston": "^3.3.3"
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx}": [
+			"cross-env NODE_ENV=development eslint --cache"
+		],
+		"{*.json,.{babelrc,eslintrc,prettierrc,stylelintrc}}": [
+			"prettier --ignore-path .eslintignore --parser json --write"
+		],
+		"*.{css,scss}": [
+			"prettier --ignore-path .eslintignore --single-quote --write"
+		],
+		"*.{html,md,yml}": [
+			"prettier --ignore-path .eslintignore --single-quote --write"
+		]
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	}
+}

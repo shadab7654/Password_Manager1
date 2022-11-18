@@ -1,0 +1,8 @@
+{
+  "verbose": true,
+  "ignore": ["*.next/*", "*next-env.d.ts"],
+  "execMap": {
+    "js": "node",
+    "ts": "ts-node"
+  }
+}
